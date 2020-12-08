@@ -12,7 +12,7 @@ class Question extends Component {
     }
     
     render(){
-        const question =  this.state.questions.map(data => <QuestionItem query={data} />)
+        const question =  this.state.questions.map(data => <QuestionItem key={data.id} query={data} />)
         return(
             <div>
                {question}
