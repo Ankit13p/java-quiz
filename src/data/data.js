@@ -3,15 +3,16 @@ const questionsList = [
         "id" : 1,
         "description" : ["public class Test {",
                          "public static void main(String[] args) {", 
-                         "System.out.println(\" \" + 2 + 'c' + true)", 
-                        "}", "}", "}"],
+                         "System.out.println(\"\" + 2 + 'c' + true);", 
+                        "}", "}"],
         "options":{
             "a": "2 c true",
             "b": "2ctrue",
             "c": "Exception Occur",
             "d": "Compilation Failed"
             },
-        "correct": "2ctrue"
+        "correct": "b",
+        "hint" : "Plus(+) can be operated as addition for two numeric values otherwise it will be work as a String concatination. So, here + will be work as a concatination. That's why answer is 2ctrue."
       
     },
     {
@@ -28,7 +29,9 @@ const questionsList = [
             "c": "Exception Occur",
             "d": "Compilation Failed"
             },
-        "correct": "Compilation Failed"
+        "correct": "d",
+        "hint" : "abstract method does not support method definition .That's why answer is Compilation Failed."
+
       
     }
 ]
