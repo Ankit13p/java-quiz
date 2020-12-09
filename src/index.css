@@ -12,4 +12,6 @@ code {
     monospace;
 }
 
-
+ul {
+  list-style-type: upper-latin;
+}

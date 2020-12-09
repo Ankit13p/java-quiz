@@ -8,40 +8,51 @@ class QuestionItem extends Component {
             correct : false,
             incorrect: false,
             submit : false,
-            choice : false
+            choice : false,
+            next : false
         }
         this.onValueChange = this.onValueChange.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
+        this.nextQuestion = this.nextQuestion.bind(this);
+
     }
     onValueChange(event) {
         this.setState({
-          selectedOption: event.target.value,
-          correct : false,
-          incorrect : false,
-          choice : true
+            selectedOption: event.target.value,
+            correct : false,
+            incorrect : false,
+            choice : true,
+            submit : true,
+            next : false
         });
-      }
+    }
     formSubmit(event) {
         event.preventDefault();
         if(this.state.selectedOption === this.props.query.correct){
             this.setState(
-                (prevState) => {
-                return {
-                    correct : true,
-                    incorrect : false,
-                    submit: true, 
-                    choice : false
-                }
+                () => {
+                    return {
+                        correct : true,
+                        incorrect : false,
+                        submit: false, 
+                        choice : false,
+                        next : true
+                    }
                 }
             ); 
         }else{
             return this.setState({
                 incorrect : true,
                 correct:false,
-                submit: true
+                submit: false,
+                choice : false,
+                next : true
             })
         }
-      }
+    }
+    nextQuestion(){
+            this.props.idIncrement();
+    }
     
     render(){
         const items = []
@@ -52,35 +63,36 @@ class QuestionItem extends Component {
           
             <div className="container mt-1 mb-2" key= {this.props.query.id}>
                 <h4 className="bg-warning text-center p-2">Question {this.props.query.id}.</h4>
-                <code className="font-weight-bold"> {items}</code>
-                <h5>Options:</h5>
-                <form onSubmit={this.formSubmit}>
-                    <ul itemType="a">
-                        <li><input type="radio" value="a" checked={this.state.selectedOption === "a"}
-                            onChange={this.onValueChange} /> <span  className="pl-2">{this.props.query.options.a}</span></li>
-                        <li><input type="radio" value="b" checked={this.state.selectedOption === "b"}
-                            onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.options.b}</span></li>
-                        <li><input type="radio" value="c" checked={this.state.selectedOption === "c"}
-                            onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.options.c}</span></li>
-                        <li><input type="radio" value="d" checked={this.state.selectedOption === "d"}
-                            onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.options.d}</span></li>
+                <div className="border border-primary p-5">
+                    <code className="font-weight-bold"> {items}</code>
+                    <h5>Options:</h5>
+                    <form onSubmit={this.formSubmit}>
+                        <ul itemType="a">
+                            <li><input type="radio" value="a" checked={this.state.selectedOption === "a"}
+                                onChange={this.onValueChange} /> <span  className="pl-2">{this.props.query.a}</span></li>
+                            <li><input type="radio" value="b" checked={this.state.selectedOption === "b"}
+                                onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.b}</span></li>
+                            <li><input type="radio" value="c" checked={this.state.selectedOption === "c"}
+                                onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.c}</span></li>
+                            <li><input type="radio" value="d" checked={this.state.selectedOption === "d"}
+                                onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.d}</span></li>
+                            
+                        </ul>
+                        {this.state.choice && <p className="text-primary">You selected : {this.state.selectedOption}</p>}
+                        {this.state.submit && <button className="btn btn-danger" type="submit"> Submit </button>}
+                        {this.state.next && <button className="btn btn-info" onClick={this.nextQuestion}> next </button>}
                         
-                    </ul>
-                    {this.state.choice && <p className="text-primary">You selected : {this.state.selectedOption}</p>}
-                    {this.state.choice && <button className="btn btn-success" type="submit"> Submit </button>}
-                    {/* {this.state.submit && <button className="btn btn-success" onClick={this.nextQuestion}> next </button>} */}
-                    
-                </form>
+                    </form>
                     <div className="pt-2">
-                    {this.state.correct && <h5 className="text-center text-light bg-success pt-2 pb-2"> Correct</h5>}
-                    {this.state.incorrect && <div>
-                                                    <h5 className="text-center text-light bg-danger pt-2 pb-2">oooops! Incorrect</h5>
-                                                    <h6 className="text-success "> Correct Answer is : {this.props.query.correct}</h6>
-                                                    <h6 className="text-info">{this.props.query.hint}</h6>
-                                                </div>}
+                        {this.state.correct && <h5 className="text-center text-light bg-success pt-2 pb-2"> Correct</h5>}
+                        {this.state.incorrect && <div>
+                                                        <h5 className="text-center text-light bg-danger pt-2 pb-2">oooops! Incorrect</h5>
+                                                        <h6 className="text-success "> Correct Answer is : {this.props.query.correct}</h6>
+                                                        <h6 className="text-info">{this.props.query.hint}</h6>
+                                                    </div>}
                     </div>
+                </div>
             </div>
-
         );
     }
 }    

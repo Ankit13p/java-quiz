@@ -1,10 +1,8 @@
+
 const questionsList = [
     {
         "id" : 1,
-        "description" : ["public class Test {",
-                         "public static void main(String[] args) {", 
-                         "System.out.println(\"\" + 2 + 'c' + true);", 
-                        "}", "}"],
+        "description" : ["public class Test {","public static void main(String[] args) {", "System.out.println(\"\" + 2 + 'c' + true);", "}", "}"],
         "options":{
             "a": "2 c true",
             "b": "2ctrue",
