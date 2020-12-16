@@ -9,11 +9,13 @@ class QuestionItem extends Component {
             incorrect: false,
             submit : false,
             choice : false,
-            next : false
+            next : false,
+            inputsDisabled: false
         }
         this.onValueChange = this.onValueChange.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
+
 
     }
     onValueChange(event) {
@@ -38,11 +40,13 @@ class QuestionItem extends Component {
                         incorrect : false,
                         submit: false, 
                         choice : false,
-                        next : true
-                        
+                        next : true,
+                        inputsDisabled: true
                     }
                 }
             ); 
+            this.props.trueAns(this.props.query.id);
+            
         }else{
             return this.setState( (prev) =>{
                 return {
@@ -50,7 +54,9 @@ class QuestionItem extends Component {
                 correct:false,
                 submit: false,
                 choice : false,
-                next : true
+                next : true,
+                inputsDisabled: true
+
 
                 }
             })
@@ -59,6 +65,7 @@ class QuestionItem extends Component {
     nextQuestion(){
             this.props.idIncrement();
     }
+  
     
     render(){
         const items = []
@@ -66,7 +73,7 @@ class QuestionItem extends Component {
             items.push(<p key={index}>{value}</p>)
           }
         return(
-            <div className="container float-left .d-inline-block" style={{width:"80%"}} key= {this.props.query.id}>
+            <div className="container float-left mb-5" key= {this.props.query.id}>
                 <h4 className="bg-warning text-center p-2 ">Question {this.props.query.id}.</h4>
                 <div className="border border-primary p-1">
                     <code className="font-weight-bold"> {items}</code>
@@ -74,13 +81,13 @@ class QuestionItem extends Component {
                     <form onSubmit={this.formSubmit}>
                         <ul itemType="a">
                             <li><input type="radio" value="a" checked={this.state.selectedOption === "a"}
-                                onChange={this.onValueChange} /> <span  className="pl-2">{this.props.query.a}</span></li>
+                                onChange={this.onValueChange} disabled={ this.state.inputsDisabled}/> <span  className="pl-2">{this.props.query.a}</span></li>
                             <li><input type="radio" value="b" checked={this.state.selectedOption === "b"}
-                                onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.b}</span></li>
+                                onChange={this.onValueChange} disabled={ this.state.inputsDisabled}/><span  className="pl-2">{this.props.query.b}</span></li>
                             <li><input type="radio" value="c" checked={this.state.selectedOption === "c"}
-                                onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.c}</span></li>
+                                onChange={this.onValueChange} disabled={ this.state.inputsDisabled}/><span  className="pl-2">{this.props.query.c}</span></li>
                             <li><input type="radio" value="d" checked={this.state.selectedOption === "d"}
-                                onChange={this.onValueChange} /><span  className="pl-2">{this.props.query.d}</span></li>
+                                onChange={this.onValueChange} disabled={ this.state.inputsDisabled}/><span  className="pl-2">{this.props.query.d}</span></li>
                             
                         </ul>
                         {this.state.choice && <p className="text-primary">You selected : {this.state.selectedOption}</p>}

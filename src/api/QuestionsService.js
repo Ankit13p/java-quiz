@@ -8,5 +8,9 @@ class QuestionsService{
     retriveQuestion(id){
         return  axios.get(`http://localhost:8080/rest/questions/${id}`);
     }
+    createQuestion(question){
+        return  axios.post(`http://localhost:8080/rest/questions/load`, question);
+    }
+    
 }
 export default new QuestionsService();

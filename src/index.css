@@ -25,3 +25,8 @@ ul {
   margin-right: -50%;
   transform: translate(-50%, -50%) 
 }
+.btn-size{
+  width: 2em;
+  height: 2em;
+  align-items: center;
+}

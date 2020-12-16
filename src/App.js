@@ -5,37 +5,21 @@ import Navigation from './component/Navigation.jsx'
 import Footer from './component/Footer.jsx'
 import Welcome from './component/Welcome.jsx'
 import Error from './component/Error.jsx'
-import Login from './component/login/Login.jsx'
-
-
-
+import AddQuestion from './component/AddQuestion';
 
 function App() {
   return (
-    // <div>
-    //   <Navigation/>
-    //   <Question />
-    //   <Footer/>
-    // </div>
     <Router>
                 <Navigation/>
                 <Switch>
                 <Route path="/" exact component={Welcome} />
                 <Route path="/welcome" component={Welcome} />
                 <Route path="/questions" component={Question} />
-                <Route path="/login" component={Login} />
-
-                {/* <Route path="/temp" component={Temp} /> */}
-                {/* <AuthenticatedRoute path="/welcome/:name" component={Welcome} />
-                <AuthenticatedRoute path="/todos/:id" component={TodoView} />
-                <AuthenticatedRoute path="/todos" component={TodoList} />*/}
-                {/* <AuthenticatedRoute path="/login" component={Login} /> */}
+                <Route path="/create" component={AddQuestion} />
                 <Route component={Error} /> 
                 </Switch>
                 <Footer/>
             </Router>
   );
-  
 }
-
 export default App;
