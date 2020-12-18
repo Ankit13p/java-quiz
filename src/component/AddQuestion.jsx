@@ -6,7 +6,7 @@ class AddQuestion extends Component{
     constructor(props){
         super(props);
         this.state = {
-            // id : this.props.match.params.qID,
+            id : this.props.match.params.id,
             description : "",
             a : "",
             b :"",
@@ -18,9 +18,7 @@ class AddQuestion extends Component{
         this.onSubmit = this.onSubmit.bind(this);
         this.validate = this.validate.bind(this);
         console.log(this.state.id);
-
     }
-    
     validate(values){
         let errors = {}
         
@@ -48,10 +46,9 @@ class AddQuestion extends Component{
         }
         return errors;
     }
-
     onSubmit(values){
         let question =  {
-            // id : this.state.id,
+            id : this.state.id,
             description : values.description,
             a : values.a,
             b : values.b,
@@ -60,50 +57,45 @@ class AddQuestion extends Component{
             correct : values.correct,
             hint : values.hint
         };
-        // if(this.state.id === -1){
+        if(this.state.id === -1){
             QuestionsService.createQuestion(question).then(
                 () => this.props.history.push(`/questions`)
-                
+            )
+        }
+        else{
+            QuestionsService.updateQuestion (this.state.id, question).then(
+                () => this.props.history.push(`/thankyou`)
             
             )
-        // }
-        // else{
-        //     QuestionsService.updateQuestion(userName, this.state.id, todo).then(
-        //         () => this.props.history.push(`/rest/questions/all`)
-            
-        //     )
-        // }
+        }
     }
-    
-    // componentDidMount(){
-    //     // if(this.state.id === -1){
-    //     //     return
-    //     // }
-    //     QuestionsService.retriveAllQuestions()
-    //     .then(res => this.setState({
-    //         description : res.data.description,
-    //         a : res.data.a,
-    //         b : res.data.b,
-    //         c: res.data.c,
-    //         d: res.data.c,
-    //         correct : res.data.correct,
-    //         hint : res.data.hint
-    //     }))
-    // }
-
+    componentDidMount(){
+        if(this.state.id === undefined){
+            return
+        }
+        if(!(this.state.id === undefined)){
+        QuestionsService.retriveQuestion(this.state.id)
+        .then(res => this.setState({
+            description : res.data.description,
+            a : res.data.a,
+            b : res.data.b,
+            c: res.data.c,
+            d: res.data.c,
+            correct : res.data.correct,
+            hint : res.data.hint
+            }))
+        }
+    }
     render(){
-        // let description = this.state.description;
-        // let targetDate = this.state.targetDate;
         let {description, a, b, c, d, correct, hint} = this.state
         return (
             <div>
-                <h2 className="mt-5 pt-3 text-info text-center"><b><i> Add Question</i></b></h2>
-                <div className="container" style={{textAlign: "left"}}>
+                {((this.state.id === undefined))&&<h2 className="mt-5 pt-3 text-info text-center animate__animated animate__fadeInLeft"><b><i> New Question</i></b></h2>}
+                {(!(this.state.id === undefined))&&<h2 className="mt-5 pt-3 text-info text-center animate__animated animate__fadeInLeft"><b><i> update Question {this.state.id}</i></b></h2>}
+                <div className="container animate__animated animate__fadeInRight" style={{textAlign: "left"}}>
                     <Formik 
                         initialValues={
                             {
-                                // description : description,
-                                // targetDate : targetDate
                                 description,
                                 a,
                                 b,
@@ -117,13 +109,10 @@ class AddQuestion extends Component{
                         validate = {this.validate}
                         validateOnBlur = {false}
                         validateOnChange = {false}
-                        enableReinitialize = {true}
-                        >
+                        enableReinitialize = {true}>
                         {
                             (props) =>(
                                 <Form>
-                                    
-                                    
                                     <fieldset className="form-group">
                                         <label><b><i> Description </i></b></label>
                                         <Field className="form-control" type="text" name="description"/>
@@ -159,8 +148,7 @@ class AddQuestion extends Component{
                                         <Field className="form-control" type="text" name="hint"/>
                                         <ErrorMessage name="hint" component="div" className="alert-warning"></ErrorMessage>
                                     </fieldset>
-                                    
-                                    <button type="submit" className="btn btn-success">Save</button>
+                                    <button type="submit" className="btn draw-border">Save</button>
                                 </Form>
                             )
                         }

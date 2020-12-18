@@ -1,4 +1,6 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import '../css/QuestionItem.css';
+
 
 class QuestionItem extends Component {
     constructor(props){
@@ -15,8 +17,6 @@ class QuestionItem extends Component {
         this.onValueChange = this.onValueChange.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
-
-
     }
     onValueChange(event) {
         this.setState((prev) =>{
@@ -46,7 +46,6 @@ class QuestionItem extends Component {
                 }
             ); 
             this.props.trueAns(this.props.query.id);
-            
         }else{
             return this.setState( (prev) =>{
                 return {
@@ -65,15 +64,13 @@ class QuestionItem extends Component {
     nextQuestion(){
             this.props.idIncrement();
     }
-  
-    
     render(){
         const items = []
         for (const [index, value] of this.props.query.description.entries()) {
             items.push(<p key={index}>{value}</p>)
           }
         return(
-            <div className="container float-left mb-5" key= {this.props.query.id}>
+            <div className="container float-left mb-5 animate__animated animate__fadeIn" key= {this.props.query.id}>
                 <h4 className="bg-warning text-center p-2 ">Question {this.props.query.id}.</h4>
                 <div className="border border-primary p-1">
                     <code className="font-weight-bold"> {items}</code>
@@ -88,16 +85,14 @@ class QuestionItem extends Component {
                                 onChange={this.onValueChange} disabled={ this.state.inputsDisabled}/><span  className="pl-2">{this.props.query.c}</span></li>
                             <li><input type="radio" value="d" checked={this.state.selectedOption === "d"}
                                 onChange={this.onValueChange} disabled={ this.state.inputsDisabled}/><span  className="pl-2">{this.props.query.d}</span></li>
-                            
                         </ul>
                         {this.state.choice && <p className="text-primary">You selected : {this.state.selectedOption}</p>}
-                        {this.state.submit && <button className="btn btn-danger" type="submit"> Submit </button>}
-                        {this.state.next && <button className="btn btn-info" onClick={this.nextQuestion}> next </button>}
-                        
+                        {this.state.submit && <button className="btn draw-border" type="submit"> Submit </button>}
+                        {this.state.next && <button className="btn draw-border" onClick={this.nextQuestion}> Next </button>}
                     </form>
                     <div className="pt-2">
                         {this.state.correct && <h5 className="text-center text-light bg-success pt-2 pb-2"> Correct</h5>}
-                        {this.state.incorrect && <div>
+                        {this.state.incorrect &&    <div>
                                                         <h5 className="text-center text-light bg-danger pt-2 pb-2">oooops! Incorrect</h5>
                                                         <h6 className="text-success "> Correct Answer is : {this.props.query.correct}</h6>
                                                         <h6 className="text-info">{this.props.query.hint}</h6>
