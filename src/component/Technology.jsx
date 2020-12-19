@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Technology(){
+class Technology extends Component{
+    constructor(){
+        super();
+        this.onClickHandle = this.onClickHandle.bind(this);
+    }
+    onClickHandle(){
+        this.props.history.push("/questions");
+    }
+    render(){
     return(
         <div className="container mt-5 mb-2 p-3" >
             <div class="panel panel-default">
@@ -45,7 +53,11 @@ function Technology(){
                     </div>
                 </div>
             </div>
+            <div className="centerText">
+                <button className="btn draw-border animate__animated animate__fadeInUp" onClick={this.onClickHandle}>Start quiz</button>
+            </div>
         </div>
     );
+    }
 }
 export default Technology;
