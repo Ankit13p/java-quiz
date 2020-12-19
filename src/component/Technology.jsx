@@ -54,7 +54,7 @@ class Technology extends Component{
                     </div>
                 </div>
             </div>
-             <div className="" style={{"text-align:center}}>
+             <div className="">
                 <button className="btn draw-border animate__animated animate__fadeInUp" onClick={this.onClickHandle}>Start quiz</button>
         </div>
         </div>
