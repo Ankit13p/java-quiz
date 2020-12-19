@@ -19,7 +19,7 @@ class Technology extends Component{
                 <div class="panel-body">
                     <div class="container">
                         <div class="row pl-5">
-                            <div class="col-md-4 m-1 p-5 border border-success rounded-right animate__animated animate__fadeInLeft bg-light">
+                            <div class="col-md-4 m-1 p-5  rounded-right animate__animated animate__fadeInLeft bg-light">
                                 <h3 className="text-danger">React</h3>
                                 <li>functional and class components</li>
                                 <li>React JSX</li>
@@ -34,7 +34,7 @@ class Technology extends Component{
                                 <li>axios: Promise based HTTP API</li>
                             
                             </div>
-                            <div class="col-md-3 m-2 p-5 border border-success rounded animate__animated animate__fadeIn">
+                            <div class="col-md-3 m-2 p-5  rounded animate__animated animate__fadeIn">
                                 <h3 className="text-danger">Java</h3>
                                 <li>Java programming</li>
                                 <li>maven </li>
@@ -44,7 +44,7 @@ class Technology extends Component{
                                 <li>Hibernate</li>
                                 <li>DataBase  : MySQL</li>
                             </div>
-                            <div class="col-md-4 m-1 p-5 border border-success rounded-left animate__animated animate__fadeInRight bg-light">
+                            <div class="col-md-4 m-1 p-5  rounded-left animate__animated animate__fadeInRight bg-light">
                                 <h3 className="text-danger">AWS - Services</h3>
                                 <li>IAM</li>
                                 <li>EC2</li>
