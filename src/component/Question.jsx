@@ -103,8 +103,8 @@ class Question extends Component {
                 { !(this.state.qID < count+1) && 
                 <>
                     <div className="centerText">
-                        {this.state.correctCount>(count/3) && <h1 className="text-success">Congratulations you are passed!!! </h1>}
-                        {!this.state.correctCount<(count/3) && <h1 className="text-danger">Ooops Sorry you are failed !!! </h1>}
+                        {/* {this.state.correctCount>(count/3) && <h1 className="text-success">Congratulations you are passed!!! </h1>}
+                        {!this.state.correctCount<(count/3) && <h1 className="text-danger">Ooops Sorry you are failed !!! </h1>} */}
                         <h4 className="container text-info">You got <span className="text-success">{this.state.correctCount}
                         </span> corrects out of <span className="text-danger">{count}</span></h4>
                     

@@ -38,8 +38,8 @@ function Technology(){
                                 <li>EC2</li>
                                 <li>S3</li>
                                 <li>RDS</li>
-                                <li>AWS Amplify</li>
-                                <li>AWS Elastic Beanstalk</li>
+                                <li>Amplify</li>
+                                <li>Elastic Beanstalk</li>
                             </div>
                         </div>
                     </div>
