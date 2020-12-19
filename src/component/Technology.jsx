@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/QuestionItem.css'
 
 class Technology extends Component{
     constructor(){
