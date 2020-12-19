@@ -11,6 +11,7 @@ class Technology extends Component{
     }
     render(){
     return(
+        <div>
         <div className="container mt-5 mb-2 p-3" >
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -54,9 +55,10 @@ class Technology extends Component{
                     </div>
                 </div>
             </div>
-            <div className="centerText">
+        </div>
+        <div className="centerText">
                 <button className="btn draw-border animate__animated animate__fadeInUp" onClick={this.onClickHandle}>Start quiz</button>
-            </div>
+        </div>
         </div>
     );
     }
