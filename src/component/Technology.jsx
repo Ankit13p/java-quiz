@@ -34,7 +34,12 @@ function Technology(){
                             </div>
                             <div class="col-md-4 m-1 p-5 border border-success rounded-left animate__animated animate__fadeInRight bg-light">
                                 <h3 className="text-danger">AWS - Services</h3>
-                                <li></li>
+                                <li>IAM</li>
+                                <li>EC2</li>
+                                <li>S3</li>
+                                <li>RDS</li>
+                                <li>AWS Amplify</li>
+                                <li>AWS Elastic Beanstalk</li>
                             </div>
                         </div>
                     </div>
