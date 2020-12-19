@@ -12,7 +12,7 @@ class Technology extends Component{
     render(){
     return(
         <div className="container mt-5 mb-2 p-3" >
-         <div className="">
+         <div className="ml-5">
                 <button className="btn draw-border animate__animated animate__fadeInUp" onClick={this.onClickHandle}>Start quiz</button>
         </div>
             <div class="panel panel-default">
