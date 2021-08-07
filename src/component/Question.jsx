@@ -77,8 +77,10 @@ class Question extends Component {
     render(){
         console.log(this.state.trueId);
         let count =0;
+        let display = false;
        const question =  this.state.questions.map(data => 
                             {   count++
+                                display = true
                                 if(data.id === this.state.qID){
                                     return <QuestionItem key={data.id} query={data} idIncrement={this.idIncrement} trueAns={this.trueAns}/>
                                 }else{
@@ -100,7 +102,7 @@ class Question extends Component {
                         <div className="border border-primary .d-inline-block p-2" >{this.createNumbers(count)}</div> 
                     </div> 
                 </>}
-                { !(this.state.qID > -1) && 
+                { !(display) && 
                 <>
                     <div className="centerText">
                         {/* {this.state.correctCount>(count/3) && <h1 className="text-success">Congratulations you are passed!!! </h1>}
