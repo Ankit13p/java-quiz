@@ -77,10 +77,8 @@ class Question extends Component {
     render(){
         console.log(this.state.trueId);
         let count =0;
-        let display = false;
        const question =  this.state.questions.map(data => 
                             {   count++
-                                display = true
                                 if(data.id === this.state.qID){
                                     return <QuestionItem key={data.id} query={data} idIncrement={this.idIncrement} trueAns={this.trueAns}/>
                                 }else{
