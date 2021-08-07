@@ -102,7 +102,7 @@ class Question extends Component {
                         <div className="border border-primary .d-inline-block p-2" >{this.createNumbers(count)}</div> 
                     </div> 
                 </>}
-                { (display) && 
+                { !(this.state.qID < count+1) && 
                 <>
                     <div className="centerText">
                         {/* {this.state.correctCount>(count/3) && <h1 className="text-success">Congratulations you are passed!!! </h1>}
