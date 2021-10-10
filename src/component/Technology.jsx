@@ -34,8 +34,9 @@ class Technology extends Component{
                                 <li>axios: Promise based HTTP API</li>
                             
                             </div>
-                            <div class="col-md-3 m-2 p-5  rounded animate__animated animate__fadeIn">
+                            <div class="col-md-3 m-2 p-5  rounded animate__animated animate__fadeIn bg-dark">
                                 <h3 className="text-danger">Java</h3>
+                                <div className="whiteTxt">
                                 <li>Java programming</li>
                                 <li>maven </li>
                                 <li>Spring Boot</li>
@@ -43,6 +44,7 @@ class Technology extends Component{
                                 <li>JPA</li>
                                 <li>Hibernate</li>
                                 <li>DataBase  : MySQL</li>
+                                </div>
                             </div>
                             <div class="col-md-4 m-1 p-5  rounded-left animate__animated animate__fadeInRight bg-light">
                                 <h3 className="text-danger">AWS - Services</h3>

@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import QuestionsService from '../api/QuestionsService.js';
+import { withRouter } from 'react-router';
 
 class AddQuestion extends Component{
     constructor(props){
@@ -80,7 +81,7 @@ class AddQuestion extends Component{
             a : res.data.a,
             b : res.data.b,
             c: res.data.c,
-            d: res.data.c,
+            d: res.data.d,
             correct : res.data.correct,
             hint : res.data.hint
             }))
@@ -90,8 +91,8 @@ class AddQuestion extends Component{
         let {description, a, b, c, d, correct, hint} = this.state
         return (
             <div>
-                {((this.state.id === undefined))&&<h2 className="mt-5 pt-3 text-info text-center animate__animated animate__fadeInLeft"><b><i> New Question</i></b></h2>}
-                {(!(this.state.id === undefined))&&<h2 className="mt-5 pt-3 text-info text-center animate__animated animate__fadeInLeft"><b><i> update Question {this.state.id}</i></b></h2>}
+                {((this.state.id === undefined))&&<h2 className="mt-5 pt-3 text-light text-center animate__animated animate__fadeInLeft"><b><i> New Question</i></b></h2>}
+                {(!(this.state.id === undefined))&&<h2 className="mt-5 pt-3 text-light text-center animate__animated animate__fadeInLeft"><b><i> Update Question {this.state.id}</i></b></h2>}
                 <div className="container animate__animated animate__fadeInRight" style={{textAlign: "left"}}>
                     <Formik 
                         initialValues={
@@ -158,4 +159,5 @@ class AddQuestion extends Component{
         );
     }
 }
-export default AddQuestion;
+// export default AddQuestion;
+export default withRouter(AddQuestion);

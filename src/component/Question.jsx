@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import '../css/QuestionItem.css'
 import QuestionItem from './QuestionItem'
 import QuestionsService from '../api/QuestionsService'
 import SpecificQuestion from './SpecificQuestion';
@@ -86,7 +87,7 @@ class Question extends Component {
                                 }
                             })
         return(
-            <div className="" >
+            <div className="textColor" >
                 { (this.state.qID < count+1) && 
                 <>
                     <div className=".d-inline-block mt-5 mb-2 p-3" style={{width:"70%"}} >
@@ -105,7 +106,7 @@ class Question extends Component {
                     <div className="centerText">
                         {/* {this.state.correctCount>(count/3) && <h1 className="text-success">Congratulations you are passed!!! </h1>}
                         {!this.state.correctCount<(count/3) && <h1 className="text-danger">Ooops Sorry you are failed !!! </h1>} */}
-                        <h4 className="container text-info">You got <span className="text-success">{this.state.correctCount}
+                        <h4 className="textColor container">You got <span className="text-success">{this.state.correctCount}
                         </span> corrects out of <span className="text-danger">{count}</span></h4>
                     
                         <button className="btn draw-border" onClick={this.thankyou}>End</button>

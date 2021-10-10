@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import '../css/QuestionItem.css'
 import { withRouter } from 'react-router';
 
 class ThankYou extends Component{
@@ -12,7 +13,7 @@ class ThankYou extends Component{
     render(){
         return(
             <div className="centerText">
-                <h1 className="animate__animated animate__hinge">Thank you </h1>
+                <h1 className="textColor animate__animated animate__hinge">Thank you </h1>
                 <button className="btn draw-border animate__animated animate__fadeInUp" onClick={this.welcome}>Start Again</button>
 
             </div> 

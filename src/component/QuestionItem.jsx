@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/QuestionItem.css';
+import { withRouter } from 'react-router';
 
 
 class QuestionItem extends Component {
@@ -17,6 +18,7 @@ class QuestionItem extends Component {
         this.onValueChange = this.onValueChange.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
+        this.editQuestion = this.editQuestion.bind(this);
     }
     onValueChange(event) {
         this.setState((prev) =>{
@@ -62,8 +64,12 @@ class QuestionItem extends Component {
         }
     }
     nextQuestion(){
-            this.props.idIncrement();
-    }
+        this.props.idIncrement();
+}
+    editQuestion(id){
+    this.props.history.push(`/questions/update/${id}`);
+}
+
     render(){
         const items = []
         for (const [index, value] of this.props.query.description.entries()) {
@@ -72,8 +78,10 @@ class QuestionItem extends Component {
         return(
             <div className="container float-left mb-5 animate__animated animate__fadeIn" key= {this.props.query.id}>
                 <h4 className="bg-warning text-center p-2 ">Question {this.props.query.id}.</h4>
-                <div className="border border-primary p-1">
-                    <code className="font-weight-bold"> {items}</code>
+                <button className="btn draw-border float-right" onClick={() =>this.editQuestion(this.props.query.id)}> Edit </button>
+                
+                <div className="border border-primary p-1 mt-5">
+                    <code className="font-weight-bold" style={{color:"black"}}> {items}</code>
                     <h5>Options:</h5>
                     <form onSubmit={this.formSubmit}>
                         <ul itemType="a">
@@ -103,5 +111,6 @@ class QuestionItem extends Component {
         );
     }
 }    
-export default QuestionItem;
+// export default QuestionItem;
+export default withRouter(QuestionItem);
 
