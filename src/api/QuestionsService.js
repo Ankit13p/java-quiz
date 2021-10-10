@@ -18,6 +18,20 @@ class QuestionsService{
     updateQuestion(id, question){
         return  axios.put(`http://quizapi.brainyfool.com/rest/questions/${id}`, question);
         // return  axios.put(`http://spring-boot-questions.ap-southeast-2.elasticbeanstalk.com/rest/questions/load/${id}`, question);
+
+      //  return  axios.get(`http://localhost:8080/rest/questions/all`);
+        // return  axios.get(`http://spring-boot-questions.ap-southeast-2.elasticbeanstalk.com/rest/questions/all`);
     }
+
+    // retriveQuestion(id){
+    //     return  axios.get(`http://spring-boot-questions.ap-southeast-2.elasticbeanstalk.com/rest/questions/${id}`);
+    // }
+    // createQuestion(question){
+    //     return  axios.post(`http://spring-boot-questions.ap-southeast-2.elasticbeanstalk.com/rest/questions/load`, question);
+    // }
+    // updateQuestion(id, question){
+    //     return  axios.put(`http://spring-boot-questions.ap-southeast-2.elasticbeanstalk.com/rest/questions/load/${id}`, question);
+
+    // }
 }
 export default new QuestionsService();
